@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "outDir": "dist",
+    "strict": false,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
     "importHelpers": true,
     "moduleResolution": "node",
-    "module": "esnext",
+    "module": "commonjs",
     "jsx": "react",
     "jsxFactory": "Taro.createElement",
     "target": "ES5",

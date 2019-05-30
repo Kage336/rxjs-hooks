@@ -1,6 +1,6 @@
 {
   "name": "rxjs-hooks-taro",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Taro hooks for RxJS",
   "main": "dist/index.js",
   "author": "LongYinan <lynweklm@gmail.com>",
