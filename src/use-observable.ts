@@ -1,5 +1,5 @@
 import { Observable, BehaviorSubject } from 'rxjs'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo } from '@tarojs/taro'
 
 import { RestrictArray } from './type'
 
@@ -36,31 +36,28 @@ export function useObservable<State, Inputs extends ReadonlyArray<any>>(
     inputs$.next(inputs)
   }, inputs || [])
 
-  useEffect(
-    () => {
-      let output$: BehaviorSubject<State>
-      if (inputs) {
-        output$ = (inputFactory as (
-          inputs$: Observable<RestrictArray<Inputs> | undefined>,
-          state$: Observable<State | undefined>,
-        ) => Observable<State>)(inputs$, state$) as BehaviorSubject<State>
-      } else {
-        output$ = (inputFactory as (state$: Observable<State | undefined>) => Observable<State>)(
-          state$,
-        ) as BehaviorSubject<State>
-      }
-      const subscription = output$.subscribe((value) => {
-        state$.next(value)
-        setState(value)
-      })
-      return () => {
-        subscription.unsubscribe()
-        inputs$.complete()
-        state$.complete()
-      }
-    },
-    [], // immutable forever
-  )
+  useEffect(() => {
+    let output$: BehaviorSubject<State>
+    if (inputs) {
+      output$ = (inputFactory as (
+        inputs$: Observable<RestrictArray<Inputs> | undefined>,
+        state$: Observable<State | undefined>,
+      ) => Observable<State>)(inputs$, state$) as BehaviorSubject<State>
+    } else {
+      output$ = (inputFactory as (state$: Observable<State | undefined>) => Observable<State>)(
+        state$,
+      ) as BehaviorSubject<State>
+    }
+    const subscription = output$.subscribe((value) => {
+      state$.next(value)
+      setState(value)
+    })
+    return () => {
+      subscription.unsubscribe()
+      inputs$.complete()
+      state$.complete()
+    }
+  }, []) // immutable forever
 
   return state
 }

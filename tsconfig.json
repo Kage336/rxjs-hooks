@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "module": "esnext",
     "jsx": "react",
+    "jsxFactory": "Taro.createElement",
     "target": "ES5",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -16,6 +17,10 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "declaration": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "global.d.ts"
+    ]
   }
 }

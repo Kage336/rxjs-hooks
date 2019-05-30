@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from '@tarojs/taro'
 import { Observable, BehaviorSubject, Subject, noop } from 'rxjs'
 
 import { RestrictArray, VoidAsNull, Not } from './type'
