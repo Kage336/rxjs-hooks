@@ -1,11 +1,11 @@
 {
   "name": "rxjs-hooks-taro",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Taro hooks for RxJS",
   "main": "dist/index.js",
   "author": "LongYinan <lynweklm@gmail.com>",
   "license": "MIT",
-  "typings": "dist/cjs/index.d.ts",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "build": "tsc",
